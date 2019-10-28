@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>TWEET MESSAGE</title>
+</h:head>
+<h:body>
+	<h2>CAPTURE TWEET MESSAGES AND TWEET</h2>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Messages : " />
+			<h:inputText value="#{tweetMessageController.tweetmessage.message}"></h:inputText>
+
+			<h:outputLabel value="Tweet Messaage : " />
+			<h:inputText
+				value="#{tweetMessageController.tweetmessage.tweetResourceMessage(message, message)}"></h:inputText>
+
+		</h:panelGrid>
+		<h:commandButton value="submit"
+			action="#{tweetMessageController.addNewTweet}" style="width: 119px; "></h:commandButton>
+	</h:form>
+
+	<h:form>
+		<h:dataTable value="#{tweet.tweetList}">
+			<h:outputLabel value="TweetBody :" />
+			<h:outputText
+				value="#{tweet.tweetList.tweetMessageController.tweetmessage.id}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputLabel value="TimeStamp :" />
+				<h:outputText
+					value="#{tweet.tweetList.tweetMessageController.tweetmessage.dateModified}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputLabel value="TweetID :" />
+				<h:outputText
+					value="#{tweet.tweetList.tweetMessageController.tweetmessage.message}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Edit</f:facet>
+				<h:commandLink value="Edit"
+					action="#{tweetMessageController.tweetmessage.tweetResourceMessage(message, message)}" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
